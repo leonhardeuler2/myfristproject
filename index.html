@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <style>
+        .hezi {
+            background: rgb(0, 255, 119);
+            height: 25px;
+            width: 100px;
+            margin: 20px;
+        }
+        .fk{color:rgb(0, 195, 255);
+        ;}
+        body{margin: 0;
+        height: 100vh;
+    background-color:#eee;
+}
+
+    /* *{border: 1px solid;
+    } */
+    .flex{display: flex;
+    }
+    baiSe{
+        background-color: white;
+    }
+    .flex1{
+        flex: 1;
+    }
+    .column{
+        flex-direction: column;
+    }
+    .mg8{
+        margin: 8px;
+    }
+    .mgr8{margin-right:8px;}
+    .mgt8{margin-top:8px;}
+    .yingying{
+        box-shadow: rgb(0 0 0/20%) 0px 2px 1px,rgb(0 0 0/14%) 0px 1px 1px 0px,rgb(0 0 0/12%) 0px 1px; 
+
+    }
+    .daohang{
+        padding:25px 20px;
+        border-bottom:1px solid ;
+        font-size: 14px;
+        color: #666;
+    }
+    .st{padding: 10px;
+    align-items:center;
+    justify-content:center;
+    border-bottom: 1px solid #999;
+    }
+    .center {
+        margin: auto;
+        width: 50%;
+        padding: 10px;}
+        .e{color: #666;}
+        
+
+
+
+.artistic-text {
+  font-family: 'Arial', sans-serif;
+  font-size: 16px;
+  color: #1bd64a;
+  text-shadow: 4px 4px 4px #000000;
+  font-style:italic;
+  font-weight:bold;
+  padding:25px 20px;
+border-bottom:1px solid #999 ;
+}
+
+
+
+
+
+</style>
+    
+<title>使用pycharts制作地图</title>
+</head>
+<body class="flex">
+<!--侧边栏-->
+ <div style="width: 250px;z-index: index 1;" class="baiSe yingying">
+    <div style="padding: 30px;
+    align-items:center;
+    justify-content:center;
+    border-bottom: 1px solid #999;"
+    class="flex">
+    <img src="C:\Users\龙仁杰\Desktop\html文件\logo1.jpg" alt="头像" width="60" height="60">
+    <div class="fk" style="margin-left:10px">周某人</div>
+</div>
+<!--导航栏-->
+    <div class="flex1">
+        <div class="artistic-text">欢迎来到我的网页</div>
+        <div class="daohang">这期网页用于介绍用python去写一张Geo图</div>
+        <div class="daohang">如果您也对python感兴趣可以与我交流</div>
+        <div class="daohang">这是我的邮箱286891315@qq.com</div>
+        <div class="daohang">如果您是单身的小姐姐的话希望您
+            了解一下我的同学何某，他是一位非常有趣且帅气的男子汉，请相信作者，
+            作者并没有收他的money
+        </div>
+        <div class="daohang">这是他的QQ3105803627</div>
+    </div>
+    
+</div>
+<!--主区域-->
+<div class="flex1 flex column">
+    <!--头部栏-->
+    <div class="baiSe yingying  " style="height: 60px;z-index: index 1;">
+      <div class="center"><b style="color: rgb(23, 115, 112);">pyecharts的Geo模块的使用</b></div> 
+    </div>
+    <!--内容栏-->
+    <div class="flex1 flex" style="overflow: auto;">
+    <!--左区-->
+<div style="flex:3" class="flex column mg8">
+    <!--数据区-->
+    <div class="flex">
+        <!--数据块-->
+        <div style="height: 100px;" class="flex1 baiSe mgr8 yingying">您只需要知道数据类型data={"city1"：['name1','name2','name3'],
+            'city2':['name4','name5']}</div>
+ 
+    </div>
+    <!--列表区-->
+    <div class="flex column">
+     <!---->
+        <div style="height: 1400px;" class="baiSe mgt8 yingying">
+            <p class="e">#导入pyecharts的Geo模块</p>
+            <p>from pyecharts.charts import Geo</p>
+            <p class="e">#全局配置</p>
+            <p>from pyecharts import options as opts</p>
+            
+            <p class="e"># 准备数据</p>
+            <p>data = {
+                    "北京": ["chicken", "周某"],
+                    "上海": ["乌鸡"],
+                    "广州": ["伟哥"],
+                    '西安':['杜天帝','wc']
+                <p class="e"># ... 添加更多城市和对应的人名</p>
+            }</p>
+            
+            <p class="e"># 创建 Geo 对象</p>
+            <p>geo = Geo()</p>
+            <p class="e"># 创建 Geo 对象</p>
+            <p>geo = Geo()</p>
+            <p class="e"># 使用Geo()函数创建Geo对象,把背景颜色设置为"#475262"，并将结果赋值给变量geo</p>
+            <p>geo = Geo(
+                init_opts=opts.InitOpts(bg_color="#475262")
+            )</p>
+            <p class="e"># 添加数据</p>
+            <p>geo.add_schema(maptype="china",
+                           itemstyle_opts=opts.ItemStyleOpts(
+                        color="#2d3948", 
+                        border_color="#58667a"
+                ),
+                emphasis_itemstyle_opts=opts.ItemStyleOpts(
+                        color="#2a333d"
+                )
+              )</p>  
+              <p class="e"># 选择中国地图</p>
+              <p>for city, names in data.items():
+                <p class="e"># 由于人数相同，这里我们使用一个固定的大小，或者您可以自定义一个大小</p>
+                <p>geo.add(
+                    <p>"高中同学分布",</p>
+                    [(city, len(names))],  
+                    <p class="e"># 使用名字列表的长度作为数据值</p>
+                    type_='scatter',
+                    symbol_size=len(names)*5,  <p># 设置一个固定的大小</p>
+                    label_opts=opts.LabelOpts(is_show=True, formatter=f"{city}"),
+                    tooltip_opts=opts.TooltipOpts(formatter=f"{city}: {', '.join(names)}")  # 显示每个城市的人名列表
+                    
+            
+                )</p>
+            
+                <p class="e"># 设置全局配置项</p>
+                    <p>geo.set_global_opts(
+                title_opts=opts.TitleOpts(title="高中同学分布图"),
+                visualmap_opts=opts.VisualMapOpts(is_show=False),  <p class="e"># 不显示视觉映射组件</p>
+            )</p>
+            
+            <p class="e"># 设置系列配置项，不显示每个城市的人数</p>
+            <p>geo.set_series_opts(label_opts=opts.LabelOpts(is_show=False))</p>  
+            <p class="e"># 渲染图表到文件,记得选一个自己的保存路径</p>
+            <p>geo.render('geo_chart.html')</p>
+        </div>
+        <div style="height: 600px;" class="baiSe mgt8 yingying">
+            <iframe src="D:\python\资源管理器\geo_chart.html" width="900" height="500"></iframe>
+        </div>
+        <div style="height: 160px;" class="baiSe mgt8 yingying center"><p>版权</p>
+        <p>备案号</p>
+        </div>   
+    </div>
+</div>
+    <!--右区-->
+<div style="flex:1" class="flex column mgr8 mgt8">
+    <!--提示区-->
+    <div style="height: 150px;" class="baiSe yingying">如果您有什么问题，或者您有更优秀的代码分享可以联系我</div>
+    <!--消息区-->
+    <div style="height: 150px;" class="baiSe mgt8 yingying" ><p>如果您没有编译器请访问：</p>
+    <p><a href="https://www.jyshare.com/compile/9/">https://www.jyshare.com/compile/9/</a></p></div>
+</div>
+ </div>
+</div>
+</body>
+</html>
